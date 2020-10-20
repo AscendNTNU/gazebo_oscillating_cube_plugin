@@ -1,6 +1,14 @@
 #Usage
 Here is a quick sum up of the last step from the tutorial http://gazebosim.org/tutorials?tut=plugins_model. 
 
+Prepare for build and build the module
+````bash
+mkdir build
+cd build
+cmake ..
+make
+cd ..
+```
 
 Do not forget to execute this line each time you open a new terminal (with your own path).
 ```bash
