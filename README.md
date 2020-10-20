@@ -2,7 +2,7 @@
 Here is a quick sum up of the last step from the tutorial http://gazebosim.org/tutorials?tut=plugins_model. 
 
 Prepare for build and build the module
-````bash
+```bash
 mkdir build
 cd build
 cmake ..
