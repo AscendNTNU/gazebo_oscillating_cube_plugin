@@ -12,7 +12,7 @@ cd ..
 
 Do not forget to execute this line each time you open a new terminal (with your own path).
 ```bash
-export GAZEBO_PLUGIN_PATH=$HOME/catkin_ws/src/control_pipeline/gazebo_plugin_tutorial/build:$GAZEBO_PLUGIN_PATH
+export GAZEBO_PLUGIN_PATH=$HOME/catkin_ws/src/control_pipeline/gazebo_oscillating_cube_plugin/build:$GAZEBO_PLUGIN_PATH
 ```
 
 To make this plugging working alone, you can start it with the command

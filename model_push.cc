@@ -14,12 +14,15 @@
  * limitations under the License.
  *
 */
-
+ 
 #include <functional>
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
 #include <gazebo/common/common.hh>
+#include <gazebo/transport/transport.hh>
 #include <ignition/math/Vector3.hh>
+#include <geometry_msgs/Point32.h>
+#include <ros/ros.h>
 
 #define TIME_CST 5000
 
@@ -28,6 +31,11 @@ namespace gazebo
   class ModelPush : public ModelPlugin
   {
     int time = 0;
+    
+    geometry_msgs::Point32 module_position;
+    ros::Publisher module_position_pub;
+    ros::NodeHandle node_handle;
+
     public: void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/)
     {
       // Store the pointer to the model
@@ -37,16 +45,21 @@ namespace gazebo
       // simulation iteration.
       this->updateConnection = event::Events::ConnectWorldUpdateBegin(
           std::bind(&ModelPush::OnUpdate, this));
+      //ros::init(argc, argv, "model_push");
+      //module_position_pub = node_handle.advertise<geometry_msgs::Point32>("simulator_module_position", 10);
+      //module_position = geometry_msgs::Point32();
     }
 
     // Called by the world update start event
     public: void OnUpdate()
-    {
+    {      
       time++;
       //float velocity = (time%TIME_CST)-TIME_CST/2;
       float velocity = sin(2*M_PI*time/TIME_CST);
       // Apply a small linear velocity to the model.
       this->model->SetLinearVel(ignition::math::Vector3d(velocity, 0, 0));
+
+      //module_position_pub.publish(module_position);
     }
 
     // Pointer to the model
